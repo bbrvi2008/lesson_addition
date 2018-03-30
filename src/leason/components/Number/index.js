@@ -1,22 +1,27 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
+import NumberView from './NumberView';
+import NumberEdit from './NumberEdit';
+
 import * as numberModes from '../../constants/numberModes';
 
 import './style.css';
 
 class Number extends Component {
   render() {
-    const { trueValue, mode } = this.props;
+    const { number, mode, onChangeNumber } = this.props;
+
+    
     
     return (
-      <span className="number">
+      <span>
         {
-          mode === numberModes.IS_HIDE && '?'
+          mode === numberModes.IS_HIDE && <span className="number">?</span>
           ||
-          mode === numberModes.IS_EDIT && <input type="number" />
+          mode === numberModes.IS_EDIT && <NumberEdit number={number} onChangeNumber={onChangeNumber} />
           ||
-          trueValue
+          <NumberView number={number} />
         }
       </span>
     );
@@ -24,9 +29,13 @@ class Number extends Component {
 }
 
 Number.propTypes = {
-  trueValue: PropTypes.number.isRequired,
-  value: PropTypes.number,
-  mode: PropTypes.string
+  number: PropTypes.shape({
+    trueValue: PropTypes.number,
+    value: PropTypes.number,
+    status: PropTypes.string
+  }),
+  mode: PropTypes.string,
+  onChangeNumber: PropTypes.func
 }
 
 export default Number;

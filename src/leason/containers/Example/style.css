@@ -5,3 +5,13 @@
   font-size: 45px;
   line-height: 45px;
 }
+
+.example input {
+  width: 60px;
+  font-size: 40px;
+}
+
+.example .number {
+  padding: 0px 5px;
+  border-radius: 5px;
+}

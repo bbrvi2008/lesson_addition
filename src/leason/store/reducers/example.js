@@ -7,20 +7,17 @@ const initialState = {
   numberA: {
     trueValue: example.numberA,
     value: null,
-    error: false,
-    success: false
+    status: null
   },
   numberB: {
     trueValue: example.numberB,
     value: null,
-    error: false,
-    success: false
+    status: null
   },
   result: {
     trueValue: example.result,
     value: null,
-    error: false,
-    success: false
+    status: null
   }
 };
 
@@ -29,26 +26,17 @@ export default (state = initialState, action) => {
     case actionTypes.CHANGE_NUMBER_A:
       return {
         ...state,
-        numberA: {
-          ...state.numberA,
-          value: action.value
-        }
+        numberA: action.number
       }
     case actionTypes.CHANGE_NUMBER_B:
       return {
         ...state,
-        numberB: {
-          ...state.numberB,
-          value: action.value
-        }
+        numberB: action.number
       }
     case actionTypes.CHANGE_RESULT:
       return {
         ...state,
-        result: {
-          ...state.result,
-          value: action.value
-        }
+        result: action.number
       }
     default:
       return state;

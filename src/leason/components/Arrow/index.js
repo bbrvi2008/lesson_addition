@@ -3,10 +3,11 @@ import PropTypes from 'prop-types';
 
 import Number from '../Number/index';
 
+import { arrow } from '../../images/arrow.js';
 import './style.css';
 
 class Arrow extends Component {
-  getArrowProps = (startIndex, endIndex) => {
+  getArrowContainerProps = (startIndex, endIndex) => {
     const consts = {
       cellLength: 37,
       defaultLeftShift: 35,
@@ -19,23 +20,26 @@ class Arrow extends Component {
     const l = consts.defaultLeftShift + startIndex * 39;
 
     return {
-      width: w,
-      bottom: 67,
+      width: w + 2,
+      bottom: 62,
       left: l,
     }
   }
 
   render() {
-    const { startIndex, trueValue, mode } = this.props;
-    const arrowProps = this.getArrowProps(startIndex, trueValue);
+    const { startIndex, endIndex, number, mode, onChangeNumber } = this.props;
+    const arrowContainerProps = this.getArrowContainerProps(startIndex, endIndex);
+    const arrowProps = {
+      width: arrowContainerProps.width
+    };
 
     return (
-      <div className="arrow" style={arrowProps}>
+      <div className="arrow" style={arrowContainerProps}>
           <div className="arrow_input">
-            <Number trueValue={trueValue} mode={mode}  />
+            <Number number={number} mode={mode} onChangeNumber={onChangeNumber}  />
           </div>          
           <div className="arrow_image">
-            стрелка
+            <img src={arrow} alt="arrow" style={arrowProps} />
           </div>
       </div>
     );
@@ -44,9 +48,14 @@ class Arrow extends Component {
 
 Arrow.propTypes = {
   startIndex: PropTypes.number.isRequired,
-  trueValue: PropTypes.number.isRequired,
-  value: PropTypes.number,
-  mode: PropTypes.string
+  endIndex: PropTypes.number.isRequired,  
+  number: PropTypes.shape({
+    trueValue: PropTypes.number,
+    value: PropTypes.number,
+    status: PropTypes.string
+  }),
+  mode: PropTypes.string,
+  onChangeNumber: PropTypes.func.isRequired
 };
 
 export default Arrow;

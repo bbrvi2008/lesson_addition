@@ -9,7 +9,7 @@ export const exampleActions = {
     type: actiosTypes.CHANGE_NUMBER_B,
     number
   }),
-  changeResult: (number) => ({
+  changeNumberResult: (number) => ({
     type: actiosTypes.CHANGE_RESULT,
     number
   })
