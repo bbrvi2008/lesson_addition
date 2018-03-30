@@ -1,0 +1,3 @@
+export const CHANGE_NUMBER_A = 'CHANGE_NUMBER_A';
+export const CHANGE_NUMBER_B = 'CHANGE_NUMBER_B';
+export const CHANGE_RESULT = 'CHANGE_RESULT';

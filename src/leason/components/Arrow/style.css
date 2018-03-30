@@ -1,0 +1,12 @@
+.arrow {
+  position: absolute;
+  border: 1px solid black;
+}
+
+.arrow_input {
+  text-align: center;
+}
+
+.arrow_input input {
+  width: 30px;
+}
