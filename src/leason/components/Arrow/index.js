@@ -36,7 +36,7 @@ class Arrow extends Component {
     return (
       <div className="arrow" style={arrowContainerProps}>
           <div className="arrow_input">
-            <Number number={number} mode={mode} onChangeNumber={onChangeNumber}  />
+            <Number number={number} mode={mode} digits={10} onChangeNumber={onChangeNumber}  />
           </div>          
           <div className="arrow_image">
             <img src={arrow} alt="arrow" style={arrowProps} />

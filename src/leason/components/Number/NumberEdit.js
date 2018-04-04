@@ -10,12 +10,17 @@ class NumberEdit extends Component {
         }
     }
 
-    onChange = (e) => {
-        debugger;
+    handleValue = (value) => {
+        const { digits } = this.props;
+        const val = parseInt(value.replace(/[^-0-9]/gim, ''), 10);
 
+        return val < 10 ? val : val % digits;
+    }
+
+    onChange = (e) => {
         const { onChangeNumber } = this.props;
-        const value = parseInt(e.target.value.replace(/[^-0-9]/gim, ''), 10);
-        onChangeNumber(value);
+        const value = e.target.value;
+        onChangeNumber(this.handleValue(value));
     }
     
     render() {
@@ -30,6 +35,7 @@ class NumberEdit extends Component {
                     style={style} 
                     onChange={this.onChange} 
                     value={number.value || ''} 
+                    ref={input => input && input.focus()}
                 />
             </span>
         );
@@ -42,6 +48,7 @@ NumberEdit.propTypes = {
         value: PropTypes.number,
         status: PropTypes.string
     }),
+    digits: PropTypes.number,
     onChangeNumber: PropTypes.func.isRequired
 }
 

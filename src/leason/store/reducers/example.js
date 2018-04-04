@@ -1,6 +1,6 @@
 import * as actionTypes from '../actions/actionTypes';
 
-import ExampleCreator from '../../utils/ExampleCreator';
+import ExampleCreator from '../../common/ExampleCreator';
 
 const example = ExampleCreator.generate();
 const initialState = {

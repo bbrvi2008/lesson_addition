@@ -24,7 +24,7 @@ class Example extends Component {
         <span className="sign">+</span>
         <Number number={numberB} />
         <span className="sign">=</span>
-        <Number number={result} mode={viewState.result.mode} onChangeNumber={this.onChangeNumberResult} />
+        <Number number={result} mode={viewState.result.mode} digits={100} onChangeNumber={this.onChangeNumberResult} />
       </div>
     );
   }

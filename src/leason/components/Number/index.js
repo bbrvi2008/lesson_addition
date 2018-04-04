@@ -10,7 +10,7 @@ import './style.css';
 
 class Number extends Component {
   render() {
-    const { number, mode, onChangeNumber } = this.props;
+    const { number, mode, digits, onChangeNumber } = this.props;
 
     
     
@@ -19,7 +19,7 @@ class Number extends Component {
         {
           mode === numberModes.IS_HIDE && <span className="number">?</span>
           ||
-          mode === numberModes.IS_EDIT && <NumberEdit number={number} onChangeNumber={onChangeNumber} />
+          mode === numberModes.IS_EDIT && <NumberEdit number={number} digits={digits} onChangeNumber={onChangeNumber} />
           ||
           <NumberView number={number} />
         }
@@ -35,6 +35,7 @@ Number.propTypes = {
     status: PropTypes.string
   }),
   mode: PropTypes.string,
+  digits: PropTypes.number,
   onChangeNumber: PropTypes.func
 }
 
